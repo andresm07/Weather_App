@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MainScreenFragment extends Fragment {
+public class MainScreenFragment extends Fragment implements OnCityClickedListener {
     private RecyclerView cityRecyclerView;
     private CityAdapter adapter;
 
@@ -32,13 +33,26 @@ public class MainScreenFragment extends Fragment {
         this.cityRecyclerView = view.findViewById(R.id.cityRecyclerView);
         this.cityRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         this.adapter.setCityList(getCities());
+        this.adapter.setListener(new OnCityClickedListener() {
+            @Override
+            public void onCityClicked(City city) {
+                Bundle arguments = new Bundle();
+                arguments.putParcelable("city", city);
+                NavHostFragment.findNavController(MainScreenFragment.this).navigate(R.id.action_mainScreen_to_viewCityDetailsFragment, arguments);
+            }
+        });
         this.cityRecyclerView.setAdapter(this.adapter);
     }
 
     private ArrayList<City> getCities() {
         ArrayList<City> result = new ArrayList<>();
-        result.add(new City("San Jose", "Costa Rica"));
-        result.add(new City("Heredia", "Costa Rica"));
+        result.add(new City("San Jose", "Costa Rica", "17°C"));
+        result.add(new City("Heredia", "Costa Rica", "18°C"));
         return result;
+    }
+
+    @Override
+    public void onCityClicked(City city) {
+
     }
 }

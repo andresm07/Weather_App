@@ -1,5 +1,5 @@
 package com.example.proyectofinal;
 
-public interface OnCityClicked {
+public interface OnCityClickedListener {
     void onCityClicked(City city);
 }

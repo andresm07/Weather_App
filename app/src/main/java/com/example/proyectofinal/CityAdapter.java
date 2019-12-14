@@ -3,11 +3,8 @@ package com.example.proyectofinal;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -16,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder>{
     private ArrayList<City> cities = new ArrayList<>();
-    private OnCityClicked listener;
+    private OnCityClickedListener listener;
 
-    public void setListener(OnCityClicked listener){
+    public void setListener(OnCityClickedListener listener){
         this.listener = listener;
     }
 
@@ -62,9 +59,16 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
             this.weatherType = itemView.findViewById(R.id.textViewWeather);
             //this.shareButton = itemView.findViewById(R.id.imageButtonShare);
             //this.likeButton = itemView.findViewById(R.id.imageButtonLike);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CityAdapter.this.listener.onCityClicked(CityAdapter.this.cities.get(getAdapterPosition()));
+                }
+            });
         }
 
-        public void bind(City city, OnCityClicked onCityClicker){
+        public void bind(City city, OnCityClickedListener onCityClicker){
             this.cityName.setText(city.getName());
             this.countryName.setText(city.getCountryName());
             this.weatherType.setText(city.getWeather());
