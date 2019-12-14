@@ -33,4 +33,6 @@ public class City {
     public void setWeather(String weather) {
         this.weather = weather;
     }
+
+
 }

@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_citydetails" />
     <fragment
         android:id="@+id/mainScreen"
-        android:name="com.example.proyectofinal.MainScreen"
+        android:name="com.example.proyectofinal.MainScreenFragment"
         android:label="fragment_mainscreen"
         tools:layout="@layout/fragment_mainscreen" >
         <action
