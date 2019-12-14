@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder> {
-    private ArrayList<String> cities = new ArrayList<>();
+    private ArrayList<City> cities = new ArrayList<>();
     private OnCityClicked listener;
 
     public void setListener(OnCityClicked listener){
@@ -28,7 +28,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CityAdapter.CityViewHolder holder, int position) {
-        holder.bind(this.cities.get(position), this.cities.get(position+1), this.cities.get(position+2), this.listener);
+        holder.bind(this.cities.get(position).getName(), this.cities.get(position).getCountryName(), this.cities.get(position).getWeather(), this.listener);
     }
 
     @Override

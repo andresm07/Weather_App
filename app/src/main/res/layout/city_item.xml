@@ -61,4 +61,10 @@
         app:layout_constraintEnd_toStartOf="@+id/imageButtonLike"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageButtonLike" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="58dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
