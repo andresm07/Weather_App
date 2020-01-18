@@ -1,7 +1,11 @@
-package com.example.proyectofinal;
+package models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class City implements Parcelable {
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -13,25 +17,34 @@ public class City implements Parcelable {
             return new City[size];
         }
     };
+    @SerializedName("weather")
+    private List<Weather> weatherList;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("country")
     private String countryName;
-    private String weather;
+
+    public City() {
+    }
 
     public City(String name, String countryName) {
         this.name = name;
         this.countryName = countryName;
     }
 
-    public City(String name, String countryName, String weather) {
-        this.name = name;
-        this.countryName = countryName;
-        this.weather = weather;
-    }
-
     public City(Parcel in) {
         this.name = in.readString();
         this.countryName = in.readString();
-        this.weather = in.readString();
+    }
+
+    public List<Weather> getWeatherList() {
+        return weatherList;
+    }
+
+    public void setWeatherList(List<Weather> weatherList) {
+        this.weatherList = weatherList;
     }
 
     public String getName() {
@@ -50,14 +63,6 @@ public class City implements Parcelable {
         this.countryName = countryName;
     }
 
-    public String getWeather() {
-        return weather;
-    }
-
-    public void setWeather(String weather) {
-        this.weather = weather;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -67,6 +72,5 @@ public class City implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.name);
         dest.writeString(this.countryName);
-        dest.writeString(this.weather);
     }
 }

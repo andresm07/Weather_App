@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.proyectofinal.LoginFragment"
+        android:name="gui_logic.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,17 +16,17 @@
     </fragment>
     <fragment
         android:id="@+id/addCityFragment"
-        android:name="com.example.proyectofinal.AddCityFragment"
+        android:name="gui_logic.AddCityFragment"
         android:label="fragment_addcity"
         tools:layout="@layout/fragment_addcity" />
     <fragment
         android:id="@+id/viewCityDetailsFragment"
-        android:name="com.example.proyectofinal.ViewCityDetailsFragment"
+        android:name="gui_logic.ViewCityDetailsFragment"
         android:label="fragment_citydetails"
         tools:layout="@layout/fragment_citydetails" />
     <fragment
         android:id="@+id/mainScreen"
-        android:name="com.example.proyectofinal.MainScreenFragment"
+        android:name="gui_logic.MainScreenFragment"
         android:label="fragment_mainscreen"
         tools:layout="@layout/fragment_mainscreen" >
         <action

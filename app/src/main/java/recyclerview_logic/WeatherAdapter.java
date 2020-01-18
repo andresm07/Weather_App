@@ -1,15 +1,17 @@
-package com.example.proyectofinal;
+package recyclerview_logic;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.proyectofinal.R;
+
+import models.Weather;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>  {
     private ArrayList<Weather> weatherArrayList = new ArrayList<>();

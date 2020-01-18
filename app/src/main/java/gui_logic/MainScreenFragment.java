@@ -1,4 +1,4 @@
-package com.example.proyectofinal;
+package gui_logic;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,19 +10,19 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MainScreenFragment extends Fragment implements OnCityClickedListener {
+import com.example.proyectofinal.R;
+
+import models.City;
+
+public class MainScreenFragment extends Fragment {
     private RecyclerView cityRecyclerView;
-    private CityAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.adapter = new CityAdapter();
-        View view = inflater.inflate(R.layout.fragment_mainscreen, container, false);
+        View view = inflater.inflate(R.layout.fragment_citydetails, container, false);
 
         return view;
     }
@@ -30,7 +30,7 @@ public class MainScreenFragment extends Fragment implements OnCityClickedListene
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.cityRecyclerView = view.findViewById(R.id.cityRecyclerView);
+        /*this.cityRecyclerView = view.findViewById(R.id.cityRecyclerView);
         this.cityRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         this.adapter.setCityList(getCities());
         this.adapter.setListener(new OnCityClickedListener() {
@@ -42,17 +42,14 @@ public class MainScreenFragment extends Fragment implements OnCityClickedListene
             }
         });
         this.cityRecyclerView.setAdapter(this.adapter);
+        */
     }
 
     private ArrayList<City> getCities() {
         ArrayList<City> result = new ArrayList<>();
-        result.add(new City("San Jose", "Costa Rica", "17°C"));
-        result.add(new City("Heredia", "Costa Rica", "18°C"));
+        result.add(new City("San Jose", "Costa Rica"));
+        result.add(new City("Heredia", "Costa Rica"));
         return result;
     }
 
-    @Override
-    public void onCityClicked(City city) {
-
-    }
 }

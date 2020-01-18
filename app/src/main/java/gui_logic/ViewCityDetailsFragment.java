@@ -1,4 +1,4 @@
-package com.example.proyectofinal;
+package gui_logic;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.proyectofinal.R;
+
+import models.City;
 
 public class ViewCityDetailsFragment extends Fragment {
 
