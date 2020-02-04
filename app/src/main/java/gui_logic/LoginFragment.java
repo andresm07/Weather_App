@@ -46,7 +46,7 @@ public class LoginFragment extends Fragment {
 
     public boolean validateLogin () {
         boolean validLogin = false;
-        UserRepository userRepository = new UserRepository(this);
+        UserRepository userRepository = new UserRepository(requireActivity().getApplication());
         LiveData<User> attemptedLoginUser = userRepository.validateUserLogin(usernameEditText.getText().toString(), passwordEditText.getText().toString());
         if (attemptedLoginUser != null) {
             validLogin = true;
