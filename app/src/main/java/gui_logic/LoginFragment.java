@@ -20,6 +20,7 @@ import db.UserRepository;
 
 public class LoginFragment extends Fragment {
     private Button loginButton;
+    private Button createUserButton;
     private EditText usernameEditText;
     private EditText passwordEditText;
 
@@ -34,11 +35,17 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validateLogin()) {
-                    NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_mainScreen);
+                    NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
                 } else {
                     //TODO: Mostrar dialogo error login
                 }
 
+            }
+        });
+        this.createUserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_createUserFragment);
             }
         });
         return view;

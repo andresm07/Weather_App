@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">ProyectoFinal</string>
-    <string name="login_button">INICIAR SESION</string>
-    <string name="add_city_button">AGREGAR A FAVORITOS</string>
-    <string name="view_weekly_button">VER SEMANAL</string>
-    <string name="username">Usuario</string>
-    <string name="password">Constraseña</string>
+    <string name="login_button">LOGIN</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
     <string name="create_user">CREATE USER</string>
 </resources>

@@ -11,29 +11,24 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_mainScreen"
-            app:destination="@id/mainScreen" />
+            android:id="@+id/action_loginFragment_to_viewCityDetailsFragment"
+            app:destination="@id/viewCityDetailsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_createUserFragment"
+            app:destination="@id/createUserFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/addCityFragment"
-        android:name="gui_logic.AddCityFragment"
-        android:label="fragment_addcity"
-        tools:layout="@layout/fragment_addcity" />
     <fragment
         android:id="@+id/viewCityDetailsFragment"
         android:name="gui_logic.ViewCityDetailsFragment"
         android:label="fragment_citydetails"
         tools:layout="@layout/fragment_citydetails" />
     <fragment
-        android:id="@+id/mainScreen"
-        android:name="gui_logic.MainScreenFragment"
-        android:label="fragment_mainscreen"
-        tools:layout="@layout/fragment_mainscreen" >
+        android:id="@+id/createUserFragment"
+        android:name="gui_logic.CreateUserFragment"
+        android:label="fragment_create_user"
+        tools:layout="@layout/fragment_create_user" >
         <action
-            android:id="@+id/action_mainScreen_to_addCityFragment"
-            app:destination="@id/addCityFragment" />
-        <action
-            android:id="@+id/action_mainScreen_to_viewCityDetailsFragment"
-            app:destination="@id/viewCityDetailsFragment" />
+            android:id="@+id/action_createUserFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>
