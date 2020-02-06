@@ -21,6 +21,7 @@ import com.example.proyectofinal.R;
 
 import db.User;
 import db.UserRepository;
+import sharedpreferences.PersistentData;
 
 public class LoginFragment extends Fragment {
     private Button loginButton;
@@ -40,6 +41,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validateLogin()) {
+                    PersistentData.saveUser(usernameEditText.getText().toString(), LoginFragment.this);
                     NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
                 } else {
                     //TODO: Mostrar dialogo error login
@@ -53,6 +55,10 @@ public class LoginFragment extends Fragment {
 
             }
         });
+        String usernamePersistentData = PersistentData.returnedLoggedUser(this);
+        if (!usernamePersistentData.isEmpty()) {
+            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
+        }
         this.createUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
