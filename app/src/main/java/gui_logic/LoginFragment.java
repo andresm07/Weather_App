@@ -1,11 +1,15 @@
 package gui_logic;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +35,7 @@ public class LoginFragment extends Fragment {
         this.loginButton = view.findViewById(R.id.loginButton);
         this.usernameEditText = view.findViewById(R.id.usernameEditText);
         this.passwordEditText = view.findViewById(R.id.passwordEditText);
+        this.createUserButton = view.findViewById(R.id.createUserButton);
         this.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +43,12 @@ public class LoginFragment extends Fragment {
                     NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
                 } else {
                     //TODO: Mostrar dialogo error login
+                    Context context = getContext();
+                    CharSequence text = "Invalid Login";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
 
             }
@@ -46,6 +57,24 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_createUserFragment);
+            }
+        });
+        this.passwordEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!usernameEditText.getText().toString().isEmpty()) {
+                    loginButton.setEnabled(true);
+                }
             }
         });
         return view;

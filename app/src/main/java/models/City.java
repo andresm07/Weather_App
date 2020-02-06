@@ -26,6 +26,12 @@ public class City implements Parcelable {
     @SerializedName("country")
     private String countryName;
 
+    @SerializedName("coord")
+    private Coordinate coordinate;
+
+    @SerializedName("weather")
+    private List<Weather> weathersList;
+
     public City() {
     }
 
@@ -61,6 +67,22 @@ public class City implements Parcelable {
 
     public void setCountryName(String countryName) {
         this.countryName = countryName;
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
+
+    public List<Weather> getWeathersList() {
+        return weathersList;
+    }
+
+    public void setWeathersList(List<Weather> weathersList) {
+        this.weathersList = weathersList;
     }
 
     @Override

@@ -31,7 +31,7 @@ public class CreateUserFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_user, container, false);
         this.usernameEditText = view.findViewById(R.id.createUserUsernameEditText);
         this.passwordEditText = view.findViewById(R.id.createUserPasswordEditText);
-        this.createUserButton = view.findViewById(R.id.createUserButton);
+        this.createUserButton = view.findViewById(R.id.createNewUserButton);
         this.passwordEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

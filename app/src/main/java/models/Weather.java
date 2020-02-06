@@ -13,14 +13,18 @@ public class Weather {
     @SerializedName("description")
     private String description;
 
+    @SerializedName("icon")
+    private String icon;
+
     public Weather() {
 
     }
 
-    public Weather(int id, String main, String description) {
+    public Weather(int id, String main, String description, String icon) {
         this.id = id;
         this.main = main;
         this.description = description;
+        this.icon = icon;
     }
 
     public int getId() {
@@ -45,5 +49,13 @@ public class Weather {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

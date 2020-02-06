@@ -16,7 +16,9 @@
             android:id="@+id/createUserUsernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username" />
+            android:hint="@string/username"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -28,11 +30,14 @@
             android:id="@+id/createUserPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/createNewUserButton"
         android:layout_marginTop="32dp"
         style="@style/PrimaryButton"
         android:layout_width="match_parent"

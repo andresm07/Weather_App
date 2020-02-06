@@ -21,7 +21,11 @@
         android:id="@+id/viewCityDetailsFragment"
         android:name="gui_logic.ViewCityDetailsFragment"
         android:label="fragment_citydetails"
-        tools:layout="@layout/fragment_citydetails" />
+        tools:layout="@layout/fragment_citydetails" >
+        <action
+            android:id="@+id/action_viewCityDetailsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createUserFragment"
         android:name="gui_logic.CreateUserFragment"
