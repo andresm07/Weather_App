@@ -29,9 +29,6 @@ public class City implements Parcelable {
     @SerializedName("coord")
     private Coordinate coordinate;
 
-    @SerializedName("weather")
-    private List<Weather> weathersList;
-
     public City() {
     }
 
@@ -78,11 +75,11 @@ public class City implements Parcelable {
     }
 
     public List<Weather> getWeathersList() {
-        return weathersList;
+        return weatherList;
     }
 
-    public void setWeathersList(List<Weather> weathersList) {
-        this.weathersList = weathersList;
+    public void setWeathersList(List<Weather> weatherList) {
+        this.weatherList = weatherList;
     }
 
     @Override

@@ -5,12 +5,14 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import java.util.List;
+
 @Dao
 public interface UserDAO {
 
     @Insert
     void insertUser (User user);
 
-    @Query("SELECT * FROM user WHERE username LIKE :username AND password LIKE :password")
-    LiveData<User> validateUserLogin (String username, String password);
+    @Query("SELECT * FROM user WHERE username = :username AND password = :password")
+    LiveData<List<User>> validateUserLogin (String username, String password);
 }

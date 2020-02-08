@@ -19,6 +19,8 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.proyectofinal.R;
 
+import java.util.List;
+
 import db.User;
 import db.UserRepository;
 import sharedpreferences.PersistentData;
@@ -40,8 +42,8 @@ public class LoginFragment extends Fragment {
         this.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateLogin()) {
-                    PersistentData.saveUser(usernameEditText.getText().toString(), LoginFragment.this);
+                if (true/*validateLogin()*/) {
+                    PersistentData.saveUser(usernameEditText.getText().toString(), requireContext());
                     NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
                 } else {
                     //TODO: Mostrar dialogo error login
@@ -55,7 +57,7 @@ public class LoginFragment extends Fragment {
 
             }
         });
-        String usernamePersistentData = PersistentData.returnedLoggedUser(this);
+        String usernamePersistentData = PersistentData.returnedLoggedUser(requireContext());
         if (!usernamePersistentData.isEmpty()) {
             NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
         }
@@ -89,8 +91,8 @@ public class LoginFragment extends Fragment {
     public boolean validateLogin () {
         boolean validLogin = false;
         UserRepository userRepository = new UserRepository(requireActivity().getApplication());
-        LiveData<User> attemptedLoginUser = userRepository.validateUserLogin(usernameEditText.getText().toString(), passwordEditText.getText().toString());
-        if (attemptedLoginUser != null) {
+        LiveData<List<User>> attemptedLoginUser = userRepository.validateUserLogin(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+        if (attemptedLoginUser.getValue().get(0) != null) {
             validLogin = true;
         }
         return validLogin;
