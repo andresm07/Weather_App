@@ -1,4 +1,4 @@
-package gui_logic;
+package ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.proyectofinal.R;
@@ -24,6 +27,8 @@ import java.util.List;
 import db.User;
 import db.UserRepository;
 import sharedpreferences.PersistentData;
+import viewmodels.CityWeatherViewModel;
+import viewmodels.UserLoginViewModel;
 
 public class LoginFragment extends Fragment {
     private Button loginButton;
@@ -39,14 +44,37 @@ public class LoginFragment extends Fragment {
         this.usernameEditText = view.findViewById(R.id.usernameEditText);
         this.passwordEditText = view.findViewById(R.id.passwordEditText);
         this.createUserButton = view.findViewById(R.id.createUserButton);
-        this.loginButton.setOnClickListener(new View.OnClickListener() {
+        UserLoginViewModel userLoginViewModel = new ViewModelProvider(this).get(UserLoginViewModel.class);
+        userLoginViewModel.getUsers().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+                loginButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (userLoginViewModel.getUser(usernameEditText.getText().toString(), passwordEditText.getText().toString())!= null) {
+                            PersistentData.saveUser(usernameEditText.getText().toString(), requireContext());
+                            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
+                        } else {
+                            //TODO: Mostrar dialogo error login
+                            Context context = getContext();
+                            CharSequence text = "Invalid Login";
+                            int duration = Toast.LENGTH_SHORT;
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+
+                        }
+                    }
+                });
+            }
+        });
+        /*this.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (true/*validateLogin()*/) {
+                if (validateLogin()) {
                     PersistentData.saveUser(usernameEditText.getText().toString(), requireContext());
                     NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
                 } else {
-                    //TODO: Mostrar dialogo error login
                     Context context = getContext();
                     CharSequence text = "Invalid Login";
                     int duration = Toast.LENGTH_SHORT;
@@ -56,7 +84,7 @@ public class LoginFragment extends Fragment {
                 }
 
             }
-        });
+        });*/
         String usernamePersistentData = PersistentData.returnedLoggedUser(requireContext());
         if (!usernamePersistentData.isEmpty()) {
             NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_viewCityDetailsFragment);
@@ -88,7 +116,7 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
-    public boolean validateLogin () {
+    /*public boolean validateLogin () {
         boolean validLogin = false;
         UserRepository userRepository = new UserRepository(requireActivity().getApplication());
         LiveData<List<User>> attemptedLoginUser = userRepository.validateUserLogin(usernameEditText.getText().toString(), passwordEditText.getText().toString());
@@ -96,7 +124,7 @@ public class LoginFragment extends Fragment {
             validLogin = true;
         }
         return validLogin;
-    }
+    }*/
 
 
 }

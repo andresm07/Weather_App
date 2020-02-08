@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import api.RetroFitAdapter;
+import db.User;
 import models.City;
 import retrofit2.Call;
 import retrofit2.Callback;

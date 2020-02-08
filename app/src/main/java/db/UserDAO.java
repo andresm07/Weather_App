@@ -13,6 +13,9 @@ public interface UserDAO {
     @Insert
     void insertUser (User user);
 
-    @Query("SELECT * FROM user WHERE username = :username AND password = :password")
+    @Query("SELECT * FROM user WHERE username = :username AND password = :password LIMIT 1")
     LiveData<List<User>> validateUserLogin (String username, String password);
+
+    @Query("SELECT * FROM user")
+    LiveData<List<User>> getUsers ();
 }

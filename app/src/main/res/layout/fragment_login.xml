@@ -74,4 +74,15 @@
         android:backgroundTint="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="@+id/loginButton"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="216dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

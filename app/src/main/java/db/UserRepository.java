@@ -27,4 +27,8 @@ public class UserRepository {
     public LiveData<List<User>> validateUserLogin (String username, String password) {
         return userDAO.validateUserLogin(username, password);
     }
+
+    public LiveData<List<User>> getUsers () {
+        return userDAO.getUsers();
+    }
 }

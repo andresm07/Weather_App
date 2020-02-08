@@ -1,5 +1,6 @@
-package gui_logic;
+package ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +57,11 @@ public class CreateUserFragment extends Fragment {
             public void onClick(View v) {
                 UserRepository userRepository = new UserRepository(requireActivity().getApplication());
                 userRepository.insertUser(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+                Context context = getContext();
+                CharSequence text = String.format("User %s created", usernameEditText.getText().toString());
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
                 Bundle arguments = new Bundle();
                 arguments.putString("key","");
                 NavHostFragment.findNavController(CreateUserFragment.this).navigate(R.id.action_createUserFragment_to_loginFragment, arguments, new NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build());

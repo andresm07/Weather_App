@@ -1,9 +1,8 @@
-package gui_logic;
+package ui;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.example.proyectofinal.R;
 
