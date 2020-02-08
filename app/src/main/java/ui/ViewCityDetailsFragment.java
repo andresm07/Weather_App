@@ -81,7 +81,7 @@ public class ViewCityDetailsFragment extends Fragment {
                 climateDescriptionTextView.setText(weather.getMain());
                 cityNameTextView.setText(city.getName());
 
-                String iconURL = String.format("http://openweathermap.org/img/wn/%s@2x.png", weather.getIcon());
+                String iconURL = String.format("https://openweathermap.org/img/wn/%s@2x.png", weather.getIcon());
                 String mapURL = String.format("https://open.mapquestapi.com/staticmap/v4/getmap?key=vwClG1n2G1TAnBDt01BHkW8EViAk57UJ&size=600,400&zoom=13&center=%s,%s",
                         city.getCoordinate().getLatitude().toString(),
                         city.getCoordinate().getLongitude().toString());
